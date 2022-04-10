@@ -1,0 +1,103 @@
+\documentclass[11pt,a4paper]{scrreprt}
+
+\usepackage{cmap}
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{ulem}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\usepackage{geometry}
+\geometry{left=30mm}
+\geometry{right=15mm}
+\geometry{top=20mm}
+\geometry{bottom=20mm}
+\geometry{foot=.7cm}
+
+\emergencystretch 10em
+
+\newenvironment{signstabular}[1][1]{
+	\renewcommand*{\arraystretch}{#1}
+	\tabular
+}{
+	\endtabular
+}
+
+\newcommand*{\undertext}[2]{%
+	\begin{tabular}[t]{@{}c@{}}%
+		#1\\\relax(\scriptsize#2)%
+	\end{tabular}
+}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+	\fontsize{11pt}{0.3\baselineskip}\selectfont \textbf{Министерство науки и высшего образования Российской Федерации \\ Федеральное государственное бюджетное образовательное учреждение \\ высшего образования \\ <<Московский государственный технический университет имени Н.Э. Баумана \\ (национальный исследовательский университет)>> \\ (МГТУ им. Н.Э. Баумана)}
+
+	\makebox[\linewidth]{\rule{\textwidth}{1pt}}
+	\makebox[\linewidth]{\rule{\textwidth}{2.5pt}}
+	
+	\vspace{\baselineskip}
+
+\end{center}
+
+\begin{flushright}
+	\begin{minipage}{0.33\linewidth}
+		\fontsize{11pt}{0.5\baselineskip}\selectfont
+		УТВЕРЖДАЮ \\
+		Заведующий кафедрой \undertext{\uline{\hfill ИУ7\hfill}}{Индекс}\\
+		\uline{\hphantom{~~И. В.Руда~}} \undertext{\uline{~И. В.Рудаков~}}{И.О.Фамилия}
+		<<\uline{\hphantom{~~~~~~~~~~}}>> \uline{\hphantom{~~~~~~~~~~~~~~~~~~}} 2022 г.
+	\end{minipage}
+\end{flushright}
+\vspace{1pt}
+\begin{center}
+	\fontsize{18pt}{\baselineskip}\selectfont \textbf{З А Д А Н И Е}\\
+	\fontsize{16pt}{\baselineskip}\selectfont \textbf{на выполнение курсовой работы}
+\end{center}
+
+\normalsize
+	
+\begingroup
+\fontsize{11pt}{1.2\baselineskip}\selectfont
+\setlength{\parskip}{0.3em}
+\setlength{\parindent}{0em}
+по дисциплине \uline{\hfill Базы данных \hfill} \\
+Студент группы \uline{\hfill ИУ7-66Б \hfill} \\ 
+\uline{\centerline{\undertext{Казаева Татьяна Алексеевна}{Фамилия, имя, отчество}}} \\
+\fontsize{11pt}{\baselineskip}\selectfont
+Тема курсовой работы \uline{~~~Разработка базы данных для хранения и аналитики результатов статистического опроса \hfill} \\
+Направленность КР (учебная, исследовательская, практическая, производственная, др.) \uline{\centerline{учебная}\hfill} \\
+Источник тематики (кафедра, предприятие, НИР) \uline{\hfill кафедра \hfill} 
+
+График выполнения работы: 25\% к \uline{6} нед., 50\% к \uline{9} нед., 75\% к \uline{13} нед., 100\% к \uline{16} нед.
+
+\textit{\textbf{Задание:}} \uline{Спроектировать и реализовать базу данных, содержащую данные, полученные при анкетировании экспертов о тональности прилагательных. Разработать систему для разметки интерфейса.\hfill} \\
+\textit{\textbf{Оформление курсовой работы:}}
+\begin{enumerate}[label=\arabic*),wide=0pt]
+	\item Расчетно-пояснительная записка на \uline{25-30} листах формата А4. \\
+	\uline{Расчетно-пояснительная записка должна содержать постановку задачи, введение, аналитическую
+	часть, конструкторскую часть, технологическую часть, экспериментально-исследовательский
+	раздел, заключение, список литературы, приложения.\hfill}
+	\item Перечень графического (иллюстративного) материала (чертежи, плакаты, слайды и т.д.) \\
+	\uline{На защиту проекта должна быть предоставлена презентация, состоящая из 15-20 слайдов. На
+		слайдах должны быть отражены: постановка задачи, использованные методы и алгоритмы,
+		структура комплекса программ, интерфейс, результаты проведенных
+		исследований. \hfill}
+\end{enumerate}
+~\\
+Дата выдачи задания
+<<\uline{\mbox{\hspace*{5mm}}}>> \uline{\mbox{\hspace*{2.5cm}}} 20\uline{22} г. \\
+~\\
+\textbf{Руководитель курсовой работы} \hfill \uline{\undertext{\mbox{\hspace*{3cm}}}{Подпись, дата}} 
+\uline{\undertext{~Ю. В. Строганов~}{И.О. Фамилия}}\\
+\textbf{Студент} \hfill
+\uline{\undertext{\mbox{\hspace*{3cm}}}{Подпись, дата}} 
+\uline{\undertext{~~~Т. А. Казаева~~~}{И.О. Фамилия}}\\
+\uline{Примечание:} Задание оформляется в двух экземплярах: один выдается студенту, второй хранится
+на кафедре.
+\end{document}
+
