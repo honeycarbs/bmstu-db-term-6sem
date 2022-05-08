@@ -149,7 +149,7 @@
 }
 
 @Article{Kanayama2006,
-  author  = {Kanayama, H. and Nasukawa, T.},
+  author  = {Kanayama, H. and and Nasukawa, T},
   journal = {Proceedings of EMNLP-2006},
   title   = {Fully automatic lexicon expansion fordomain-oriented sentiment analys},
   year    = {2006},
