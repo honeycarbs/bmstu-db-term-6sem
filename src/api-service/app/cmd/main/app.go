@@ -3,6 +3,8 @@ package main
 import (
 	"api/internal/config"
 	"api/internal/handlers/auth"
+	"api/internal/handlers/landing"
+	"api/internal/handlers/poll"
 	"api/pkg/cache/freecache"
 	"api/pkg/handler/metric"
 	"api/pkg/logger"
@@ -39,6 +41,12 @@ func main() {
 
 	metricHandler := metric.Handler{Logger: logger}
 	metricHandler.Register(router)
+
+	pollHandler := poll.Handler{Logger: logger}
+	pollHandler.Register(router)
+
+	landingHandler := landing.Handler{Logger: logger}
+	landingHandler.Register(router)
 
 	logger.Println("Starting application....")
 	start(router, logger, cfg)

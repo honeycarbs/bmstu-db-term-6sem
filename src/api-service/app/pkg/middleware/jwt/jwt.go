@@ -40,6 +40,7 @@ func JWTMiddleware(h http.HandlerFunc) http.HandlerFunc {
 		logger.Debug("parce and verify JWT token")
 		token, err := jwt.ParseAndVerifyString(jwtToken, verifier)
 		if err != nil {
+			logger.Infof("%s", jwtToken)
 			unautorized(w, err)
 			return
 		}

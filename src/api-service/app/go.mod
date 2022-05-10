@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/coocood/freecache v1.2.1
 	github.com/cristalhq/jwt/v3 v3.1.0
+	github.com/google/uuid v1.3.0
 	github.com/ilyakaznacheev/cleanenv v1.2.6
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/sirupsen/logrus v1.8.1
