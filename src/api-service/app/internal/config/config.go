@@ -8,7 +8,10 @@ import (
 
 type Config struct {
 	isDebug *bool `yaml:"is_debug"`
-	Listen  struct {
+	JWT     struct {
+		Secret string `yaml:"secret" env-required:"true"`
+	}
+	Listen struct {
 		Type   string `yaml:"type" env-default:"port"`
 		BindIP string `yaml:"bind_ip" env-default:"localhost"`
 		Port   string `yaml:"port" env-default:"8080"`

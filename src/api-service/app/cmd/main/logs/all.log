@@ -3,3 +3,5 @@ time="2022-05-10T00:03:30+03:00" level=info msg="Application initialized. Have f
 time="2022-05-10T00:03:30+03:00" level=info msg="Initialize application router" func="router.go:22" file="api/internal/router.Init()"
 time="2022-05-10T00:03:30+03:00" level=info msg="socket path: %s/tmp/go-build4205055400/b001/exe/app.sock" func="router.go:30" file="api/internal/router.Init()"
 time="2022-05-10T00:03:30+03:00" level=info msg="create and listen unix socket" func="router.go:38" file="api/internal/router.Init()"
+time="2022-05-10T01:35:41+03:00" level=info msg="Caught signal %s. Shutting down.terminated" func="router.go:49" file="api/internal/router.Init.func1()"
+time="2022-05-10T01:35:41+03:00" level=fatal msg="accept unix /tmp/go-build4205055400/b001/exe/app.sock: use of closed network connection" func="router.go:57" file="api/internal/router.Init()"
