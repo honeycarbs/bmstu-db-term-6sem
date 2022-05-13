@@ -1,0 +1,7 @@
+bind_addr = ":8080"
+log_level = "debug"
+
+[Storage]
+database_uri = "bolt://localhost"
+database_username = "neo4j"
+database_password = "test"

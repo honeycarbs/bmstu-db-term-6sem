@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.1 $
+% $ biblatex bbl format version 3.2 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -37,7 +37,7 @@
       \strng{authornamehash}{b31a450c4705a825d54e9c3bad61d497}
       \strng{authorfullhash}{b31a450c4705a825d54e9c3bad61d497}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Язык, память, образ. Лингвистика языкового существования.}
@@ -63,7 +63,7 @@
       \strng{authornamehash}{d32b6ffc44dd95b9917c86982e094724}
       \strng{authorfullhash}{d32b6ffc44dd95b9917c86982e094724}
       \field{sortinit}{2}
-      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Компьютерная лингвистика и интеллектуальные технологии: «Диалог-2011». Сб. научных статей / Вып. 11}
@@ -90,7 +90,7 @@
       \strng{authornamehash}{675df7a31168d8dd3e7ff8e568bff2f2}
       \strng{authorfullhash}{675df7a31168d8dd3e7ff8e568bff2f2}
       \field{sortinit}{3}
-      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Proceedings of EMNLP-2006}
@@ -117,7 +117,7 @@
       \strng{authornamehash}{7cd24beb0032528b799f14524534a2f3}
       \strng{authorfullhash}{7cd24beb0032528b799f14524534a2f3}
       \field{sortinit}{4}
-      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Мониторинг общественного мнения : Экономические и социальные перемены.}
@@ -157,7 +157,7 @@
       \strng{editornamehash}{05924773c6f23acceda00c1185105ff6}
       \strng{editorfullhash}{05924773c6f23acceda00c1185105ff6}
       \field{sortinit}{5}
-      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{chapter}{Four Russias: Human Potential and Social Differentiation of Russian Regions and Cities.}
@@ -184,7 +184,7 @@
       \strng{authornamehash}{2162c86c9b0618d387a39816c685a11c}
       \strng{authorfullhash}{2162c86c9b0618d387a39816c685a11c}
       \field{sortinit}{6}
-      \field{sortinithash}{7851c86048328b027313775d8fbd2131}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Экспрессивность русского слова}
@@ -225,7 +225,7 @@
       \strng{authornamehash}{2b985261bc8d03ce86feac1da802da36}
       \strng{authorfullhash}{de445bda2927c421c8422a233f083cf5}
       \field{sortinit}{7}
-      \field{sortinithash}{f615fb9c6fba11c6f962fb3fd599810e}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Мониторингобщественного мнения : Экономические исоциальные перемены.}
@@ -247,7 +247,7 @@
       \strng{authornamehash}{7f71d2477b1e45e8847e6acaba3f108a}
       \strng{authorfullhash}{7f71d2477b1e45e8847e6acaba3f108a}
       \field{sortinit}{9}
-      \field{sortinithash}{54047ffb55bdefa0694bbd554c1b11a0}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computational Linguistics and Intellectual Technologies:Proceedings of the International Conference Dialogue 2021}
@@ -279,7 +279,7 @@
       \strng{authornamehash}{591499750f4fcdfa6ba0cb12ef347e11}
       \strng{authorfullhash}{591499750f4fcdfa6ba0cb12ef347e11}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computational Linguistics and Intellectual Technologies: Proceedings of the International Conference «Dialog-2012»}
@@ -326,7 +326,7 @@
       \strng{authornamehash}{2bf2bedcd17fe437a2f82ddc0aa55333}
       \strng{authorfullhash}{e230a213363db250a69734827e26054a}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computational Linguistics and IntellectualTechnologies: Proceedings of the International Conference «Dialog-2015»}
@@ -373,7 +373,7 @@
       \strng{authornamehash}{b92f787b9f622a94ad95dc6de1fff8ed}
       \strng{authorfullhash}{7e3c2a7a1db326f43f3cfc277751295f}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Proceedings of the 27th International Conference onComputational Linguistics}
@@ -382,7 +382,7 @@
     \endentry
     \entry{kaggle}{online}{}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
       \field{title}{Sentiment Analysis in Russian}
       \field{upday}{4}
@@ -421,7 +421,7 @@
       \strng{authornamehash}{f7cbf81aeee05cc5c1f43ce6d74ae071}
       \strng{authorfullhash}{f7cbf81aeee05cc5c1f43ce6d74ae071}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computational Linguistics and Intellectual Technologies: Proceedings of the International Conference "Dialogue 2016"}
@@ -430,7 +430,7 @@
     \endentry
     \entry{linis}{online}{}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
       \field{title}{Общедоступный тональный словарь PolSentiLex и краудсорсинговая платформа для его создания.}
       \field{upday}{4}
@@ -459,7 +459,7 @@
       \strng{authornamehash}{77d2d616cc86772b59eb7091721a058c}
       \strng{authorfullhash}{77d2d616cc86772b59eb7091721a058c}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{инженерия знаний и технологии семантического веба.}
@@ -468,7 +468,7 @@
     \endentry
     \entry{goodisgood}{online}{}
       \field{sortinit}{1}
-      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
       \field{title}{How good is <<good>>?}
       \field{upday}{2}
@@ -502,7 +502,7 @@
       \strng{authornamehash}{3fb2ab77cbeb85e61c49a20596843033}
       \strng{authorfullhash}{3fb2ab77cbeb85e61c49a20596843033}
       \field{sortinit}{2}
-      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Доклады международной конференции Диалог 2004}
@@ -511,7 +511,7 @@
     \endentry
     \entry{nosql}{online}{}
       \field{sortinit}{2}
-      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
       \field{title}{Нереляционные данные и базы данных NoSQL}
       \field{upday}{4}
@@ -545,12 +545,172 @@
       \strng{authornamehash}{8582e448e989a4b3be2efa86d3060529}
       \strng{authorfullhash}{8582e448e989a4b3be2efa86d3060529}
       \field{sortinit}{2}
-      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Proceedings of the IEEE International Conference on Tools withArtificial Intelligence}
       \field{title}{Hierarchical language models for expert finding in enter-prise corpora}
       \field{year}{2006}
+    \endentry
+    \entry{Leonard1973}{article}{}
+      \name{author}{2}{}{%
+        {{hash=ac0e8a5babde2a0ee8214eb6417f7f6f}{%
+           family={Leonard},
+           familyi={L\bibinitperiod},
+           given={J.\bibnamedelimi LaPadula},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=80567dceae65b8cb6fe5df70a3e75795}{%
+           family={D.\bibnamedelimi Elliott},
+           familyi={D\bibinitperiod\bibinitdelim E\bibinitperiod},
+           given={Bell},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{ff22e9583973dd8bd5bdd729a47a1a05}
+      \strng{fullhash}{ff22e9583973dd8bd5bdd729a47a1a05}
+      \strng{bibnamehash}{ff22e9583973dd8bd5bdd729a47a1a05}
+      \strng{authorbibnamehash}{ff22e9583973dd8bd5bdd729a47a1a05}
+      \strng{authornamehash}{ff22e9583973dd8bd5bdd729a47a1a05}
+      \strng{authorfullhash}{ff22e9583973dd8bd5bdd729a47a1a05}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{MITRECorporation Technical Report 2547, Volume II.}
+      \field{title}{Secure Computer Systems: A Mathematical Model}
+      \field{year}{1973}
+    \endentry
+    \entry{Sholichah2020}{article}{}
+      \name{author}{3}{}{%
+        {{hash=cdb45493d6c2e7263490a976c0347dad}{%
+           family={Sholichah},
+           familyi={S\bibinitperiod},
+           given={Rahmatian},
+           giveni={R\bibinitperiod}}}%
+        {{hash=d18e6c5a728e5df9b4529fc8c7c32dff}{%
+           family={Imrona},
+           familyi={I\bibinitperiod},
+           given={Mahmud},
+           giveni={M\bibinitperiod}}}%
+        {{hash=0230d6b0244f7c9fe36936da25026745}{%
+           family={Alamsyah},
+           familyi={A\bibinitperiod},
+           given={Andry},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{c636f4d4308f161811dab1daaf5bd054}
+      \strng{fullhash}{c636f4d4308f161811dab1daaf5bd054}
+      \strng{bibnamehash}{c636f4d4308f161811dab1daaf5bd054}
+      \strng{authorbibnamehash}{c636f4d4308f161811dab1daaf5bd054}
+      \strng{authornamehash}{c636f4d4308f161811dab1daaf5bd054}
+      \strng{authorfullhash}{c636f4d4308f161811dab1daaf5bd054}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Performance Analysis of Neo4j and MySQL Databases using Public Policies Decision Making Data}
+      \field{year}{2020}
+    \endentry
+    \entry{aws}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Обзор кэширования}
+      \field{upday}{5}
+      \field{upmonth}{9}
+      \field{upyear}{2022}
+      \field{updateera}{ce}
+      \verb{urlraw}
+      \verb https://aws.amazon.com/ru/caching/
+      \endverb
+      \verb{url}
+      \verb https://aws.amazon.com/ru/caching/
+      \endverb
+    \endentry
+    \entry{memtable}{online}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{Cassandra Documentation: Storage Engine}
+      \field{upday}{4}
+      \field{upmonth}{9}
+      \field{upyear}{2022}
+      \field{updateera}{ce}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://cassandra.apache.org/doc/latest/cassandra/architecture/storage_engine.html
+      \endverb
+      \verb{url}
+      \verb https://cassandra.apache.org/doc/latest/cassandra/architecture/storage_engine.html
+      \endverb
+    \endentry
+    \entry{neo4docs}{online}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{Neo4j documentation}
+      \field{upday}{4}
+      \field{upmonth}{9}
+      \field{upyear}{2022}
+      \field{updateera}{ce}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://neo4j.com/docs/
+      \endverb
+      \verb{url}
+      \verb https://neo4j.com/docs/
+      \endverb
+    \endentry
+    \entry{db-stats}{online}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{DB-Engines Ranking of Graph DBMS}
+      \field{upday}{9}
+      \field{upmonth}{4}
+      \field{upyear}{2022}
+      \field{updateera}{ce}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://db-engines.com/en/ranking/graph dbms
+      \endverb
+      \verb{url}
+      \verb https://db-engines.com/en/ranking/graph%20dbms
+      \endverb
+    \endentry
+    \entry{Balog2006}{article}{}
+      \name{author}{3}{}{%
+        {{hash=ca744862e118b17e4e6c997f5a0bbc73}{%
+           family={Balog},
+           familyi={B\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+        {{hash=faee4395a314b2e49fe7615568fb17b2}{%
+           family={Azzopardi},
+           familyi={A\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+        {{hash=8de8a8be4ff0a129f61410fa13cd9d46}{%
+           family={Rijke},
+           familyi={R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{741b00749e635e3ebbae1cb69a69bc7b}
+      \strng{fullhash}{741b00749e635e3ebbae1cb69a69bc7b}
+      \strng{bibnamehash}{741b00749e635e3ebbae1cb69a69bc7b}
+      \strng{authorbibnamehash}{741b00749e635e3ebbae1cb69a69bc7b}
+      \strng{authornamehash}{741b00749e635e3ebbae1cb69a69bc7b}
+      \strng{authorfullhash}{741b00749e635e3ebbae1cb69a69bc7b}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the Annual International ACM SIGIR Conference on Re-search and Development in Information Retrieval}
+      \field{title}{Formal models for expert finding in enterprisecorpora}
+      \field{year}{2006}
+      \true{nocite}
     \endentry
   \enddatalist
 \endrefsection

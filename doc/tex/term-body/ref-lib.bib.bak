@@ -149,10 +149,29 @@
 }
 
 @Article{Kanayama2006,
-  author  = {Kanayama, H. and and Nasukawa, T},
+  author  = {Kanayama, H. and Nasukawa, T.},
   journal = {Proceedings of EMNLP-2006},
   title   = {Fully automatic lexicon expansion fordomain-oriented sentiment analys},
   year    = {2006},
+}
+
+@Article{Leonard1973,
+  author  = {Leonard, J. LaPadula and D. Elliott, Bell},
+  journal = {MITRECorporation Technical Report 2547, Volume II.},
+  title   = {Secure Computer Systems: A Mathematical Model},
+  year    = {1973},
+}
+
+@Article{Sholichah2020,
+  author = {Sholichah, Rahmatian and Imrona, Mahmud and Alamsyah, Andry},
+  title  = {Performance Analysis of Neo4j and MySQL Databases using Public Policies Decision Making Data},
+  year   = {2020},
+}
+
+@Online{,
+  title  = {Обзор кэширования},
+  update = {2022-09-05},
+  url    = {https://aws.amazon.com/ru/caching/},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
