@@ -1,1 +1,29 @@
-GET http://localhost:8080/hello
+POST http://localhost:8080/accounts
+Content-Type: application/json
+
+{
+    "username" : "honeycarbs",
+    "email" : "honeycarbs@honeycarbs.com",
+    "password": "qwerty123",
+    "user" : { 
+        "age": 21,
+        "race" : "white",
+        "gender": "F" 
+    }
+}
+
+###
+
+POST http://localhost:8080/sessions
+Content-Type: application/json
+Origin: "google.com"
+
+{
+    "username" : "honeycarbs",
+    "email" : "honeycarbs@honeycarbs.com",
+    "password": "qwerty123"
+}
+
+###
+GET http://localhost:8080/private/whoami
+Content-Type: application/json

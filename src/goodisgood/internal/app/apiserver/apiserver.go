@@ -1,72 +1,32 @@
 package apiserver
 
 import (
-	"goodisgood/internal/storage"
-	"io"
+	neo4jstorage "goodisgood/internal/app/storage/neo4j"
 	"net/http"
 
-	"github.com/gorilla/mux"
-	"github.com/sirupsen/logrus"
+	"github.com/gorilla/sessions"
+
+	"github.com/neo4j/neo4j-go-driver/v4/neo4j"
 )
 
-type APIServer struct {
-	config  *Config
-	logger  *logrus.Logger
-	router  *mux.Router
-	storage *storage.Storage
-}
-
-func New(config *Config) *APIServer {
-	return &APIServer{
-		config: config,
-		logger: logrus.New(),
-		router: mux.NewRouter(),
-	}
-}
-
-func (s *APIServer) Start() error {
-	if err := s.getLogger(); err != nil {
-		return err
-	}
-
-	s.getRouter()
-
-	if err := s.getStorage(); err != nil {
-		return err
-	}
-
-	s.logger.Info("Starting API server...")
-
-	return http.ListenAndServe(s.config.BindAddr, s.router)
-}
-
-func (s *APIServer) getLogger() error {
-	level, err := logrus.ParseLevel(s.config.LogLevel)
+func Start(config *Config) error {
+	db, err := newDB(config.DBURI, config.DBUsername, config.DBPassword)
 	if err != nil {
 		return err
 	}
+	defer db.Close()
 
-	s.logger.SetLevel(level)
-
-	return nil
+	storage := neo4jstorage.NewStorage(db)
+	sessionStorage := sessions.NewCookieStore([]byte(config.SessionKey))
+	s := newServer(storage, sessionStorage)
+	return http.ListenAndServe(config.BindAddr, s)
 }
 
-func (s *APIServer) getRouter() {
-	s.router.HandleFunc("/hello", s.handleHello())
-}
-
-func (s *APIServer) getStorage() error {
-	st := storage.New(s.config.storage)
-	if err := st.Open(); err != nil {
-		return err
+func newDB(DBUri, DBUsername, DBPassword string) (neo4j.Driver, error) {
+	db, err := neo4j.NewDriver(DBUri, neo4j.BasicAuth(DBUsername, DBPassword, ""))
+	if err != nil {
+		return nil, err
 	}
-	s.storage = st
 
-	return nil
-}
-
-func (s *APIServer) handleHello() http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		io.WriteString(w, "hello")
-	}
+	return db, nil
 }

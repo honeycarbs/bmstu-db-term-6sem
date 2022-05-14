@@ -8,8 +8,6 @@ import (
 )
 
 func TestAccount_Validate(t *testing.T) {
-	// a := model.TestAccount()
-	// assert.NoError(t, a.Validate())
 	testCases := []struct {
 		name    string
 		a       func() *model.Account

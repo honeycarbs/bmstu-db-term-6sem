@@ -7,11 +7,11 @@ import (
 )
 
 type Account struct {
-	UUID              string
-	Username          string
-	Email             string
-	Password          string
-	EncryptedPassword string
+	UUID              string `json:"uuid"`
+	Username          string `json:"username,omitempty"`
+	Email             string `json:"email,omitempty"`
+	Password          string `json:"password,omitempty"`
+	EncryptedPassword string `json:"-"`
 }
 
 func (a *Account) Validate() error {
@@ -32,6 +32,14 @@ func (a *Account) EncryptPassword() error {
 		a.EncryptedPassword = enc
 	}
 	return nil
+}
+
+func (a *Account) Sanitize() {
+	a.Password = ""
+}
+
+func (a *Account) ComparePassword(password string) bool {
+	return bcrypt.CompareHashAndPassword([]byte(a.EncryptedPassword), []byte(password)) == nil
 }
 
 func encryptString(p string) (string, error) {
