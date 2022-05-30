@@ -20,11 +20,8 @@ func TestAccountRepository_Create(t *testing.T) {
 
 func TestAccountRepository_FindByEmail(t *testing.T) {
 	d := neo4jStorage.TestDB(t, DBuri, DBUsername, DBPassword)
-	// e1 := "gopher111@gopher.go"
 
 	s := neo4jStorage.NewStorage(d)
-	// _, err := s.Account().FindByEmail(e1)
-	// assert.Error(t, err)
 
 	e2 := "gopher@gopher.go"
 	a, err := s.Account().FindByEmail(e2)

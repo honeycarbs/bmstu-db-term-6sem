@@ -5,21 +5,52 @@ import (
 	"net/http"
 
 	"github.com/gorilla/sessions"
+	"github.com/sirupsen/logrus"
 
 	"github.com/neo4j/neo4j-go-driver/v4/neo4j"
 )
 
-func Start(config *Config) error {
-	db, err := newDB(config.DBURI, config.DBUsername, config.DBPassword)
+func Start(conf *Config) error {
+	uconf, err := NewDBConfig("config/dbuser.toml")
 	if err != nil {
 		return err
 	}
-	defer db.Close()
+	logrus.New().Info(uconf)
+	aconf, err := NewDBConfig("config/dbadmin.toml")
+	if err != nil {
+		return err
+	}
+	logrus.New().Info(aconf)
+	mconf, err := NewDBConfig("config/dbmoderator.toml")
+	if err != nil {
+		return err
+	}
+	logrus.New().Info(mconf)
+	dbu, err := newDB(uconf.DBURI, uconf.DBUsername, uconf.DBPassword)
+	if err != nil {
+		return err
+	}
+	defer dbu.Close()
 
-	storage := neo4jstorage.NewStorage(db)
-	sessionStorage := sessions.NewCookieStore([]byte(config.SessionKey))
-	s := newServer(storage, sessionStorage)
-	return http.ListenAndServe(config.BindAddr, s)
+	dba, err := newDB(aconf.DBURI, aconf.DBUsername, aconf.DBPassword)
+	if err != nil {
+		return err
+	}
+	defer dba.Close()
+
+	dbm, err := newDB(mconf.DBURI, mconf.DBUsername, mconf.DBPassword)
+	if err != nil {
+		return err
+	}
+	defer dba.Close()
+
+	ustorage := neo4jstorage.NewStorage(dbu)
+	astorage := neo4jstorage.NewStorage(dba)
+	mstorage := neo4jstorage.NewStorage(dbm)
+
+	sessionStorage := sessions.NewCookieStore([]byte(conf.SessionKey))
+	s := newServer(ustorage, mstorage, astorage, sessionStorage)
+	return http.ListenAndServe(conf.BindAddr, s)
 }
 
 func newDB(DBUri, DBUsername, DBPassword string) (neo4j.Driver, error) {

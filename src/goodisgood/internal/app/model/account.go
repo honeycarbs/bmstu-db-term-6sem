@@ -11,6 +11,7 @@ type Account struct {
 	Username          string `json:"username,omitempty"`
 	Email             string `json:"email,omitempty"`
 	Password          string `json:"password,omitempty"`
+	Role              string `json:"role,omitempty"`
 	EncryptedPassword string `json:"-"`
 }
 
@@ -28,7 +29,6 @@ func (a *Account) EncryptPassword() error {
 		if err != nil {
 			return err
 		}
-
 		a.EncryptedPassword = enc
 	}
 	return nil

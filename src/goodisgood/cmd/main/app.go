@@ -4,7 +4,6 @@ import (
 	"flag"
 	"goodisgood/internal/app/apiserver"
 
-	// "github.com/sirupsen/logrus"
 	"log"
 
 	"github.com/BurntSushi/toml"
@@ -21,13 +20,13 @@ func init() {
 func main() {
 	flag.Parse()
 
+	// config.toml
 	config := apiserver.NewConfig()
 	_, err := toml.DecodeFile(configPath, config)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// s := apiserver.Start(config)
 	if err := apiserver.Start(config); err != nil {
 		log.Fatal(err)
 	}

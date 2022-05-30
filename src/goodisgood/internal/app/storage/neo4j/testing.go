@@ -13,7 +13,5 @@ func TestDB(t *testing.T, DBuri, DBUsername, DBPassword string) neo4j.Driver {
 	if err != nil {
 		t.Fatal(err)
 	}
-	// defer db.Close()
-
 	return db
 }

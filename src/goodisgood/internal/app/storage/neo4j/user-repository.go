@@ -10,15 +10,15 @@ type UserRepository struct {
 	storage *Storage
 }
 
-func (r *UserRepository) Create(auuid string, u *model.User) (err error) {
+func (r *UserRepository) Create(auuid string, u *model.User) error {
 	if err := u.Validate(); err != nil {
 		return err
 	}
 
-	session := r.storage.db.NewSession(neo4j.SessionConfig{AccessMode: neo4j.AccessModeWrite})
-	defer func() {
-		err = session.Close()
-	}()
+	session := r.storage.db.NewSession(neo4j.SessionConfig{AccessMode: neo4j.AccessModeWrite,
+		DatabaseName: "goodisgood"})
+	defer session.Close()
+
 	if _, err := session.WriteTransaction(func(tx neo4j.Transaction) (interface{}, error) {
 		return r.createQuery(tx, auuid, u)
 	}); err != nil {

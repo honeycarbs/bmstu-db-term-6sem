@@ -626,6 +626,48 @@
       \verb https://aws.amazon.com/ru/caching/
       \endverb
     \endentry
+    \entry{neo4docs}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Neo4j documentation}
+      \field{upday}{4}
+      \field{upmonth}{9}
+      \field{upyear}{2022}
+      \field{updateera}{ce}
+      \verb{urlraw}
+      \verb https://neo4j.com/docs/
+      \endverb
+      \verb{url}
+      \verb https://neo4j.com/docs/
+      \endverb
+    \endentry
+    \entry{go}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Documentation}
+      \verb{urlraw}
+      \verb https://go.dev/doc/
+      \endverb
+      \verb{url}
+      \verb https://go.dev/doc/
+      \endverb
+      \warn{\item Entry 'go' (ref-lib.bib): Invalid format '2022-18-05' of date field 'update' - ignoring}
+    \endentry
+    \entry{gorilla}{online}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{title}{Gorilla web toolkit}
+      \verb{urlraw}
+      \verb https://www.gorillatoolkit.org/
+      \endverb
+      \verb{url}
+      \verb https://www.gorillatoolkit.org/
+      \endverb
+      \warn{\item Entry 'gorilla' (ref-lib.bib): Invalid format '2022-18-05' of date field 'update' - ignoring}
+    \endentry
     \entry{memtable}{online}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
@@ -643,26 +685,9 @@
       \verb https://cassandra.apache.org/doc/latest/cassandra/architecture/storage_engine.html
       \endverb
     \endentry
-    \entry{neo4docs}{online}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
-      \field{labeltitlesource}{title}
-      \field{title}{Neo4j documentation}
-      \field{upday}{4}
-      \field{upmonth}{9}
-      \field{upyear}{2022}
-      \field{updateera}{ce}
-      \true{nocite}
-      \verb{urlraw}
-      \verb https://neo4j.com/docs/
-      \endverb
-      \verb{url}
-      \verb https://neo4j.com/docs/
-      \endverb
-    \endentry
     \entry{db-stats}{online}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
       \field{title}{DB-Engines Ranking of Graph DBMS}
       \field{upday}{9}
@@ -703,8 +728,8 @@
       \strng{authorbibnamehash}{741b00749e635e3ebbae1cb69a69bc7b}
       \strng{authornamehash}{741b00749e635e3ebbae1cb69a69bc7b}
       \strng{authorfullhash}{741b00749e635e3ebbae1cb69a69bc7b}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Proceedings of the Annual International ACM SIGIR Conference on Re-search and Development in Information Retrieval}

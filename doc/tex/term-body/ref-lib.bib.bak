@@ -168,10 +168,28 @@
   year   = {2020},
 }
 
-@Online{,
+@Online{aws,
   title  = {Обзор кэширования},
   update = {2022-09-05},
   url    = {https://aws.amazon.com/ru/caching/},
+}
+
+@Online{go,
+  title  = {Documentation},
+  update = {2022-18-05},
+  url    = {https://go.dev/doc/},
+}
+
+@Online{gorilla,
+  title  = {Gorilla web toolkit},
+  update = {2022-18-05},
+  url    = {https://www.gorillatoolkit.org/},
+}
+
+@Online{cypher,
+  title  = {Cypher Query Language},
+  update = {2022-18-05},
+  url    = {https://neo4j.com/developer/cypher/},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

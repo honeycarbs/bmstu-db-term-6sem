@@ -17,3 +17,12 @@ func TestUser() *User {
 		Gender: "M",
 	}
 }
+
+func TestLocation() *Location {
+	return &Location{
+		UUID:     "5faa353d-b658-4778-bb6d-f5b6d0b61de0",
+		Name:     "Москва",
+		Region:   "Москва",
+		District: "Центральный",
+	}
+}

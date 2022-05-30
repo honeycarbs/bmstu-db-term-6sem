@@ -7,9 +7,12 @@ import (
 )
 
 type Storage struct {
-	db                neo4j.Driver
-	accountRepository *AccountRepository
-	userRepository    *UserRepository
+	db                       neo4j.Driver
+	accountRepository        *AccountRepository
+	userRepository           *UserRepository
+	locationRepository       *LocationRepository
+	educationPlaceRepository *EducationPlaceRepository
+	pollRepository           *PollRepository
 }
 
 func NewStorage(db neo4j.Driver) *Storage {
@@ -39,4 +42,36 @@ func (s *Storage) User() storage.UserRepository {
 		storage: s,
 	}
 	return s.userRepository
+}
+
+func (s *Storage) Location() storage.LocationRepository {
+	if s.locationRepository != nil {
+		return s.locationRepository
+	}
+
+	s.locationRepository = &LocationRepository{
+		storage: s,
+	}
+	return s.locationRepository
+}
+
+func (s *Storage) EducationPlace() storage.EducationPlaceRepository {
+	if s.educationPlaceRepository != nil {
+		return s.educationPlaceRepository
+	}
+	s.educationPlaceRepository = &EducationPlaceRepository{
+		storage: s,
+	}
+	return s.educationPlaceRepository
+}
+
+func (s *Storage) Poll() storage.PollRepository {
+	if s.pollRepository != nil {
+		return s.pollRepository
+	}
+
+	s.pollRepository = &PollRepository{
+		storage: s,
+	}
+	return s.pollRepository
 }

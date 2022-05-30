@@ -1,0 +1,3 @@
+database_uri = "bolt://localhost"
+database_username = "website"
+database_password = "letmein"

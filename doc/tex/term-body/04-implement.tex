@@ -1,2 +1,193 @@
 \chapter{Технологический раздел}\label{sec:impl}
+\section{Выбор средств разработки}
+База данных neo4j\cite{neo4docs} удовлетворяет требованиям, изложенным в подразделе \ref{subsec:store}, поэтому она была использована в качестве хранилища. 
 
+Язык Golang\cite{go} обладает достаточным набором инструментов для написания одностраничных приложений: предоставляет базовые возможности маршрутизации, интерфейс работы с базами данных и конфигурационными файлами, поэтому он был выбран в качестве реализации клиентского приложения. Базовый интерфейс маршрутизации был расширен с помощью пакета Gorilla\cite{gorilla}.
+
+\section[Реализация клиентского приложения]{Реализация клиентского\\ приложения}
+Модельные структуры для сущностей, описывающих узлы и связи базы данных представлены на листинге \ref{lst:model}
+
+\begin{lstlisting}[label=lst:model,caption=Модельные структуры]
+type Account struct {
+	UUID              string `json:"uuid"`
+	Username          string `json:"username,omitempty"`
+	Email             string `json:"email,omitempty"`
+	Password          string `json:"password,omitempty"`
+	Role              string `json:"role,omitempty"`
+	EncryptedPassword string `json:"-"`
+}
+
+type EducationPlace struct {
+	UUID string `json:"uuid"`
+	Name string `json:"name"`
+}
+type EducationProgram struct {
+	Field string `json:"field"`
+	Level string `json:"level"`
+}
+
+type Location struct {
+	UUID     string `json:"uuid"`
+	Name     string `json:"name"`
+	Region   string `json:"region"`
+	District string `json:"district"`
+}
+
+
+type Answer struct {
+	Word string
+	Mark int
+}
+
+type User struct {
+	UUID   string `json:"uuid,omitempty"`
+	Age    int    `json:"age"`
+	Race   string `json:"race"`
+	Gender string `json:"gender"`
+}
+\end{lstlisting}
+База данных хранит пароли в качестве функции свертки с модификатором входа. Хеширование и проверка пароля представлены на листинге \ref{lst:hash}.
+\begin{lstlisting}[label=lst:hash,caption=Хеширование и проверка пароля]
+func (a *Account) EncryptPassword() error {
+	if len(a.Password) > 0 {
+		enc, err := encryptString(a.Password)
+		if err != nil {
+			return err
+		}
+		a.EncryptedPassword = enc
+	}
+	return nil
+}
+
+func (a *Account) ComparePassword(password string) bool {
+	return bcrypt.CompareHashAndPassword(
+		[]byte(a.EncryptedPassword), []byte(password)) == nil
+}
+
+func encryptString(p string) (string, error) {
+	b, err := bcrypt.GenerateFromPassword([]byte(p), bcrypt.MinCost)
+	if err != nil {
+		return "", err
+	}
+	return string(b), nil
+}
+\end{lstlisting}
+
+Сервис, работающий с базой данных аналогичен для всех модельных структур. На листинге \ref{lst:db} представлен механизм установки соединения и регистрации пользователя.
+
+\begin{lstlisting}[label=lst:db,caption=Установка соединения и отправка запросов]
+func newDB(DBUri, DBUsername, DBPassword string) (neo4j.Driver, error) {
+	db, err := neo4j.NewDriver(DBUri, neo4j.BasicAuth(DBUsername,
+		 DBPassword, ""))
+	if err != nil {
+		return nil, err
+	}
+	return db, nil
+}
+
+func (r *AccountRepository) Create(a *model.Account) error {
+	if err := a.Validate(); err != nil {
+		return err
+	}
+	if err := a.EncryptPassword(); err != nil {
+		return err
+	}
+	session := r.storage.db.NewSession(neo4j.SessionConfig{AccessMode:
+		 neo4j.AccessModeWrite, DatabaseName: "goodisgood"})
+	defer session.Close()
+	
+	if _, err := session.WriteTransaction(func(
+	tx neo4j.Transaction) (interface{}, error) {
+		return r.createQuery(tx, a)
+	}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (r *AccountRepository) createQuery(tx neo4j.Transaction, 
+		a *model.Account) (*model.Account, error) {
+	result, err := tx.Run(
+	`create (a: account{id: apoc.create.uuid(),
+						username: $username,
+						email: $email,
+						password:$password, role:"user"}) 
+	return a.id as id`,
+	map[string]interface{}{
+		"username": a.Username,
+		"email":    a.Email,
+		"password": a.EncryptedPassword,
+	},
+	)
+	
+	if err != nil {
+		return nil, err
+	}
+	
+	record, err := result.Single()
+	
+	if err != nil {
+		return nil, err
+	}
+	
+	id, _ := record.Get("id")
+	a.UUID = id.(string)
+	
+	return a, nil
+}
+\end{lstlisting}
+Механизм маршрутизации запроса на авторизацию пользователя представлен на листинге \ref{lst:sessions}
+\begin{lstlisting}[label=lst:sessions,caption=Маршрутизация запроса аутентификации]
+func (s *server) handleSessionsCreate() http.HandlerFunc {
+	type request struct {
+		Username string `json:"username"`
+		Email    string `json:"email"`
+		Password string `json:"password"`
+	}
+	return func(w http.ResponseWriter, r *http.Request) {
+		req := &request{}
+		if err := json.NewDecoder(r.Body).Decode(req); err != nil {
+			s.logger.Error(w, r, http.StatusBadRequest, err)
+			return
+		}
+		a, err := s.ustorage.Account().FindByEmail(req.Email)
+		if err != nil || !a.ComparePassword(req.Password) {
+			if err != nil {
+				s.logger.Infof(err.Error())
+			}
+			s.error(w, r, http.StatusUnauthorized, 
+				errInvalidEmailOrPassword)
+			return
+		}
+		
+		session, err := s.sessionStorage.Get(r, sessionName)
+		if err != nil {
+			s.error(w, r, http.StatusInternalServerError, err)
+			return
+		}
+		
+		session.Values["account_id"] = a.UUID
+		if err := s.sessionStorage.Save(r, w, session); err != nil {
+			s.error(w, r, http.StatusInternalServerError, err)
+			return
+		}
+		
+		s.respond(w, r, http.StatusOK, nil)
+	}
+}
+
+func (s *server) error(w http.ResponseWriter, r *http.Request,
+	 code int, err error) {
+	s.respond(w, r, code, map[string]string{"error": err.Error()})
+}
+
+func (s *server) respond(w http.ResponseWriter, r *http.Request,
+	 code int, data interface{}) {
+	w.WriteHeader(code)
+	if data != nil {
+		json.NewEncoder(w).Encode(data)
+	}
+}
+\end{lstlisting}
+
+\section{Запросы к базе данных}
