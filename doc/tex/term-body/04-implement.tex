@@ -1,13 +1,16 @@
 \chapter{Технологический раздел}\label{sec:impl}
 \section{Выбор средств разработки}
-База данных neo4j\cite{neo4docs} удовлетворяет требованиям, изложенным в подразделе \ref{subsec:store}, поэтому она была использована в качестве хранилища. 
+%База данных Neo4j\cite{neo4docs} удовлетворяет требованиям, изложенным в подразделе \ref{subsec:store}, поэтому она была использована в качестве хранилища. e
+В разделе \ref{subsec:store} обоснована необходимость использования графовых баз данных. В качестве системы управления базами данных была выбрана СУБД Neo4j\cite{neo4docs}, поскольку может быть доступна из ПО, написанного на практически любом языке с использованием языка запросов Cypher, через обращение к маршруту отдельным HTTP методом или через протокол <<bolt>>.
 
 Язык Golang\cite{go} обладает достаточным набором инструментов для написания одностраничных приложений: предоставляет базовые возможности маршрутизации, интерфейс работы с базами данных и конфигурационными файлами, поэтому он был выбран в качестве реализации клиентского приложения. Базовый интерфейс маршрутизации был расширен с помощью пакета Gorilla\cite{gorilla}.
 
 \section[Реализация клиентского приложения]{Реализация клиентского\\ приложения}
-Модельные структуры для сущностей, описывающих узлы и связи базы данных представлены на листинге \ref{lst:model}
+%Модельные структуры для сущностей, описывающих узлы и связи базы данных представлены на листинге \ref{lst:model}
+Модельные структуры для сущностей соответствуют сущностям базы данных, представленным на рисунке \ref{fig:chen}.
 
-\begin{lstlisting}[label=lst:model,caption=Модельные структуры]
+На листинге \ref{lst:model1} представлена модельная структура сущности <<Аккаунт>>.
+\begin{lstlisting}[label=lst:model1,caption=Модельная структура сущности <<Аккаунт>>]
 type Account struct {
 	UUID              string `json:"uuid"`
 	Username          string `json:"username,omitempty"`
@@ -16,7 +19,19 @@ type Account struct {
 	Role              string `json:"role,omitempty"`
 	EncryptedPassword string `json:"-"`
 }
+\end{lstlisting}
+На листинге \ref{lst:model3} представлена модельная структура сущности <<Пользователь>>.
+\begin{lstlisting}[label=lst:model3,caption=Модельная структура сущности <<Пользователь>>]
+type User struct {
+	UUID   string `json:"uuid,omitempty"`
+	Age    int    `json:"age"`
+	Race   string `json:"race"`
+	Gender string `json:"gender"`
+}
+\end{lstlisting}
 
+На листинге \ref{lst:model2} представлены модельные структуры сущностей <<Населенный пункт>>, <<Программа>> и <<Место обучения>>.
+\begin{lstlisting}[label=lst:model2,caption=Модельные структуры сущностей <<Населенный пункт>>\, <<Программа>> и <<Место обучения>>]
 type EducationPlace struct {
 	UUID string `json:"uuid"`
 	Name string `json:"name"`
@@ -25,27 +40,24 @@ type EducationProgram struct {
 	Field string `json:"field"`
 	Level string `json:"level"`
 }
-
 type Location struct {
 	UUID     string `json:"uuid"`
 	Name     string `json:"name"`
 	Region   string `json:"region"`
 	District string `json:"district"`
 }
-
-
+\end{lstlisting}
+На листинге \ref{lst:model4} представлены модельные структуры сущностей <<Результат тестирования>> и <<Прилагательное>>.
+\begin{lstlisting}[label=lst:model4,caption=Модельные структуры сущностей <<Результат тестирования>> и <<Прилагательное>>]
 type Answer struct {
 	Word string
 	Mark int
 }
-
-type User struct {
-	UUID   string `json:"uuid,omitempty"`
-	Age    int    `json:"age"`
-	Race   string `json:"race"`
-	Gender string `json:"gender"`
+type Poll struct {
+	Answer []Answer
 }
 \end{lstlisting}
+
 База данных хранит пароли в качестве функции свертки с модификатором входа. Хеширование и проверка пароля представлены на листинге \ref{lst:hash}.
 \begin{lstlisting}[label=lst:hash,caption=Хеширование и проверка пароля]
 func (a *Account) EncryptPassword() error {
@@ -159,28 +171,23 @@ func (s *server) handleSessionsCreate() http.HandlerFunc {
 				errInvalidEmailOrPassword)
 			return
 		}
-		
 		session, err := s.sessionStorage.Get(r, sessionName)
 		if err != nil {
 			s.error(w, r, http.StatusInternalServerError, err)
 			return
 		}
-		
 		session.Values["account_id"] = a.UUID
 		if err := s.sessionStorage.Save(r, w, session); err != nil {
 			s.error(w, r, http.StatusInternalServerError, err)
 			return
 		}
-		
 		s.respond(w, r, http.StatusOK, nil)
 	}
 }
-
 func (s *server) error(w http.ResponseWriter, r *http.Request,
 	 code int, err error) {
 	s.respond(w, r, code, map[string]string{"error": err.Error()})
 }
-
 func (s *server) respond(w http.ResponseWriter, r *http.Request,
 	 code int, data interface{}) {
 	w.WriteHeader(code)
@@ -191,3 +198,76 @@ func (s *server) respond(w http.ResponseWriter, r *http.Request,
 \end{lstlisting}
 
 \section{Запросы к базе данных}
+Neo4j использует язык запросов Cypher\cite{cypher}. 
+
+На листинге \ref{lst:user-find} приведен запрос связи места обучения с пользователем.
+\begin{lstlisting}[label=lst:user-find,caption=Запрос связи места обучения с пользователем]
+match (u:user)-[o:OWNS]->(a:account{id:$auuid})
+match(e:education_place{name: $ename})
+merge((u)-[s:STUDIES{field:$field, level: $level}]->(e))
+\end{lstlisting}
+На листинге \ref{lst:acc} приведен запрос для создания пользователя, связанного с конкретным аккаунтом. 
+\begin{lstlisting}[label=lst:acc,caption=Запрос для создания пользователя\, связанного с конкретным аккаунтом]
+match
+	(a:account)
+where
+	a.id=$auuid
+create (u:user{id: apoc.create.uuid(),
+				race: $race,
+				age: $age,
+				gender:$gender})
+create (u)-[o:OWNS]->(a)
+return a.id as id	
+\end{lstlisting}
+На листинге \ref{lst:stats} приведен запрос для заполнения опроса (разметки прилагательного).
+\begin{lstlisting}[label=lst:poll,caption=Запрос для заполнения опроса]
+match (u:user)-[o:OWNS]->(a:account{id:$auuid})
+match (w:word{name: $wname})
+optional match (u)-[m:MARKED]->(w)
+call apoc.do.when(
+m is null,
+' create (u)-[m:MARKED{mark: mrk}]->(w)
+return m is not null as ok',
+'return true as ok',
+{u:u, w:w, mrk: $mark}) yield value
+return value.ok as ok
+\end{lstlisting}
+На листинге \ref{lst:stats} приведен запрос для получения общей статистики.
+\begin{lstlisting}[label=lst:stats,caption=Запрос для получения общей статистики]
+match ()-[r:MARKED]->(w:word)
+with w.name AS name, collect(r.mark) AS marklist, COUNT(r.mark) AS cnt
+unwind marklist as ml
+return distinct name, avg(ml) as avg
+\end{lstlisting}
+
+
+\section{Тестирование}
+Тестирование осуществлялось с помощью стандартных механизмов Golang -- пакета Testing\cite{testing}. На листинге \ref{lst:testing} приведено тестирование функции поиска пользователя.
+\begin{lstlisting}[label=lst:testing,caption=Тестирование функции поиска пользователя]
+func TestAccountRepository_FindByEmail(t *testing.T) {
+	d := neo4jStorage.TestDB(t, DBuri, DBUsername, DBPassword)
+	s := neo4jStorage.NewStorage(d)
+	e2 := "gopher@gopher.go"
+	a, err := s.Account().FindByEmail(e2)
+	assert.NoError(t, err)
+	assert.NotNil(t, a)
+}
+func TestAccountRepository_Find(t *testing.T) {
+	d := neo4jStorage.TestDB(t, DBuri, DBUsername, DBPassword)
+	
+	s := neo4jStorage.NewStorage(d)
+	u1, err := s.Account().FindByEmail("gopher@gopher.go")
+	if err != nil {
+		t.Fatal(err)
+	}
+	e2 := u1.UUID
+	a, err := s.Account().Find(e2)
+	logrus.New().Info(err)
+	assert.NoError(t, err)
+	assert.NotNil(t, a)
+}
+\end{lstlisting}
+
+\section{Вывод}
+
+ 

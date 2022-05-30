@@ -509,6 +509,19 @@
       \field{title}{Анализ связанных объектов и визуализация результатов}
       \field{year}{2004}
     \endentry
+    \entry{cassandra}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{title}{Apache Cassandra Documentation}
+      \verb{urlraw}
+      \verb https://cassandra.apache.org/_/index.html
+      \endverb
+      \verb{url}
+      \verb https://cassandra.apache.org/_/index.html
+      \endverb
+      \warn{\item Entry 'cassandra' (ref-lib.bib): Invalid format '2022-18-05' of date field 'update' - ignoring}
+    \endentry
     \entry{nosql}{online}{}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
@@ -643,8 +656,8 @@
       \endverb
     \endentry
     \entry{go}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{title}{Documentation}
       \verb{urlraw}
@@ -668,9 +681,35 @@
       \endverb
       \warn{\item Entry 'gorilla' (ref-lib.bib): Invalid format '2022-18-05' of date field 'update' - ignoring}
     \endentry
+    \entry{cypher}{online}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{title}{Cypher Query Language}
+      \verb{urlraw}
+      \verb https://neo4j.com/developer/cypher/
+      \endverb
+      \verb{url}
+      \verb https://neo4j.com/developer/cypher/
+      \endverb
+      \warn{\item Entry 'cypher' (ref-lib.bib): Invalid format '2022-18-05' of date field 'update' - ignoring}
+    \endentry
+    \entry{testing}{online}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{title}{testing}
+      \verb{urlraw}
+      \verb https://pkg.go.dev/testing
+      \endverb
+      \verb{url}
+      \verb https://pkg.go.dev/testing
+      \endverb
+      \warn{\item Entry 'testing' (ref-lib.bib): Invalid format '2022-18-05' of date field 'update' - ignoring}
+    \endentry
     \entry{memtable}{online}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
       \field{title}{Cassandra Documentation: Storage Engine}
       \field{upday}{4}

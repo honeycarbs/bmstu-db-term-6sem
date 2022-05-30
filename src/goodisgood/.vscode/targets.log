@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 30 00:47:33 2022
+# Make data base, printed on Mon May 30 03:19:06 2022
 
 # Variables
 
@@ -21,7 +23,7 @@ SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-82b09fe2-d2f4-4020-ad44-0e2eb8b7f2eb.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-3fea0c0d-e25c-470e-8461-6b85c41d30bb.sock
 # environment
 LC_NAME = ru_RU.UTF-8
 # environment
@@ -34,6 +36,8 @@ LC_ADDRESS = ru_RU.UTF-8
 MAKE_COMMAND := make
 # environment
 QT_ACCESSIBILITY = 1
+# environment
+GOPATH = /home/honeycarbs/go
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -61,7 +65,7 @@ VSCODE_CODE_CACHE_PATH = /home/honeycarbs/.config/Code/CachedData/57fd6d0195bb9b
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.CLWEN1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.2MI8M1
 # default
 .LOADED := 
 # default
@@ -97,13 +101,13 @@ ZSH = /home/honeycarbs/.oh-my-zsh
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 58057
+VSCODE_PID = 86219
 # environment
 XDG_SESSION_TYPE = wayland
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/honeycarbs-vivobook:@/tmp/.ICE-unix/993,unix/honeycarbs-vivobook:/tmp/.ICE-unix/993
+SESSION_MANAGER = local/honeycarbs-vivobook:@/tmp/.ICE-unix/84958,unix/honeycarbs-vivobook:/tmp/.ICE-unix/84958
 # automatic
 *F = $(notdir $*)
 # environment
@@ -143,7 +147,7 @@ LC_MONETARY = ru_RU.UTF-8
 # environment
 LC_TIME = ru_RU.UTF-8
 # environment
-INVOCATION_ID = 95a1f4d85ea6435eb9c1a493658a5600
+INVOCATION_ID = ec7b5f65732a44d1a882284693384457
 # environment
 VSCODE_LOG_NATIVE = false
 # environment
@@ -175,7 +179,7 @@ GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # makefile (from 'Makefile', line 9)
 .DEFAULT_GOAL := build
 # environment
-SYSTEMD_EXEC_PID = 1015
+SYSTEMD_EXEC_PID = 84995
 # environment
 DISPLAY = :0
 # environment
@@ -189,7 +193,7 @@ MANAGERPID = 874
 # environment
 LC_MEASUREMENT = ru_RU.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 58057
+GIO_LAUNCHED_DESKTOP_FILE_PID = 86219
 # environment
 PAGER = less
 # environment
@@ -199,7 +203,9 @@ LC_PAPER = ru_RU.UTF-8
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-JOURNAL_STREAM = 8:30726
+JOURNAL_STREAM = 8:580282
+# environment
+GOMODCACHE = /home/honeycarbs/go/pkg/mod
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -212,6 +218,8 @@ QT_IM_MODULE = ibus
 ELECTRON_RUN_AS_NODE = 1
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-8e1e0ab6-1.67.0-main.sock
+# environment
+GOPROXY = https://proxy.golang.org,direct
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -227,7 +235,7 @@ GDMSESSION = ubuntu
 # environment
 LC_IDENTIFICATION = ru_RU.UTF-8
 # variable set hash-table stats:
-# Load=108/1024=11%, Rehash=0, Collisions=4/139=3%
+# Load=111/1024=11%, Rehash=0, Collisions=5/142=4%
 
 # Pattern-specific Variable Values
 
@@ -279,15 +287,13 @@ test:
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 7):
- 
-make: *** No rule to make target 'all'.  Stop.
-
 	go test -v -race ./...
 
 .PHONY: build test
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 # files hash-table stats:
 # Load=7/1024=1%, Rehash=0, Collisions=0/22=0%
@@ -303,6 +309,6 @@ make: *** No rule to make target 'all'.  Stop.
 # strcache performance: lookups = 31 / hit rate = 35%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=0/31=0%
-# Finished Make data base on Mon May 30 00:47:33 2022
+# Finished Make data base on Mon May 30 03:19:06 2022
 
  
