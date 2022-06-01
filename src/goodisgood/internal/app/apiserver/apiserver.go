@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/gorilla/sessions"
-	"github.com/sirupsen/logrus"
 
 	"github.com/neo4j/neo4j-go-driver/v4/neo4j"
 )
@@ -15,17 +14,14 @@ func Start(conf *Config) error {
 	if err != nil {
 		return err
 	}
-	logrus.New().Info(uconf)
 	aconf, err := NewDBConfig("config/dbadmin.toml")
 	if err != nil {
 		return err
 	}
-	logrus.New().Info(aconf)
 	mconf, err := NewDBConfig("config/dbmoderator.toml")
 	if err != nil {
 		return err
 	}
-	logrus.New().Info(mconf)
 	dbu, err := newDB(uconf.DBURI, uconf.DBUsername, uconf.DBPassword)
 	if err != nil {
 		return err
@@ -50,6 +46,7 @@ func Start(conf *Config) error {
 
 	sessionStorage := sessions.NewCookieStore([]byte(conf.SessionKey))
 	s := newServer(ustorage, mstorage, astorage, sessionStorage)
+
 	return http.ListenAndServe(conf.BindAddr, s)
 }
 

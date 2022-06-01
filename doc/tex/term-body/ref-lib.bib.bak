@@ -199,9 +199,16 @@
 }
 
 @Online{cassandra,
-  title  = {testing},
+  title  = {Apache Cassandra Documentation},
   update = {2022-18-05},
   url    = {https://cassandra.apache.org/_/index.html},
+}
+
+@Book{,
+  author    = {Ян, Робинсон and Джим, Вебер and Эмиль Эифрем},
+  publisher = {ДМК Пресс},
+  title     = {Графовые базы данных. Новые возможности для работы со связанными данными},
+  year      = {2016},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

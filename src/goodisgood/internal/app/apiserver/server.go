@@ -60,30 +60,40 @@ func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.router.ServeHTTP(w, r)
 }
 
+func setupCORS(w *http.ResponseWriter, req *http.Request) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+	(*w).Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	(*w).Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
+}
+
 func (s *server) configureRouter() {
 	// s.router.Use(s.setRequestID)
 	// s.router.Use(s.logRequest)
-	s.router.Use(handlers.CORS(handlers.AllowedOrigins([]string{"*"})))
+	// s.router.Use(handlers.CORS(handlers.AllowedOrigins([]string{"*"})))
+	s.router.Use(handlers.CORS(handlers.AllowedOrigins([]string{"http://localhost",
+		"http://localhost:80"}), handlers.AllowedMethods([]string{"GET", "POST", "OPTIONS"}),
+		handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"}),
+		handlers.AllowCredentials()))
 
-	s.router.HandleFunc("/accounts", s.handleAccountsCreate()).Methods("POST")
-	s.router.HandleFunc("/sessions", s.handleSessionsCreate()).Methods("POST")
-	s.router.HandleFunc("/locations", s.handleLocationGet()).Methods("GET")
-	s.router.HandleFunc("/education", s.handleEducationPlaceGet()).Methods("GET")
+	s.router.HandleFunc("/accounts", s.handleAccountsCreate()).Methods("POST", "OPTIONS")
+	s.router.HandleFunc("/sessions", s.handleSessionsCreate()).Methods("POST", "OPTIONS")
+	s.router.HandleFunc("/locations", s.handleLocationGet()).Methods("GET", "OPTIONS")
+	s.router.HandleFunc("/education", s.handleEducationPlaceGet()).Methods("GET", "OPTIONS")
 
 	authorized := s.router.PathPrefix("/authorized").Subrouter()
 	authorized.Use(s.authenticateAccount)
-	authorized.HandleFunc("/whoami", s.handleWhoami()).Methods("GET")
-	authorized.HandleFunc("/poll", s.handleSubmitPoll()).Methods("POST")
-	// authorized.HandleFunc("/poll", s.handleResultGet()).Methods("GET")
-	authorized.HandleFunc("/poll", s.handleWordsGet()).Methods("GET")
+	authorized.HandleFunc("/whoami", s.handleWhoami()).Methods("GET", "OPTIONS")
+	authorized.HandleFunc("/poll", s.handleSubmitPoll()).Methods("POST", "OPTIONS")
+	authorized.HandleFunc("/results", s.handleResultGet()).Methods("GET", "OPTIONS")
+	authorized.HandleFunc("/poll", s.handleWordsGet()).Methods("GET", "OPTIONS")
 
 	moderate := s.router.PathPrefix("/moderate").Subrouter()
 	moderate.Use(s.checkIfModerator)
-	moderate.HandleFunc("/accounts", s.handleAllAccountsGet()).Methods("GET")
+	moderate.HandleFunc("/accounts", s.handleAllAccountsGet()).Methods("GET", "OPTIONS")
 
 	administrate := s.router.PathPrefix("/administrate").Subrouter()
 	administrate.Use(s.checkIfAdmin)
-	administrate.HandleFunc("/stats", s.handleStatsGet()).Methods("GET")
+	administrate.HandleFunc("/stats", s.handleStatsGet()).Methods("GET", "OPTIONS")
 
 }
 
@@ -492,4 +502,12 @@ func (s *server) respond(w http.ResponseWriter, r *http.Request, code int, data 
 	if data != nil {
 		json.NewEncoder(w).Encode(data)
 	}
+	if (*r).Method == "OPTIONS" {
+		return
+	}
+	setupCORS(&w, r)
+	w.Header().Add("Access-Control-Allow-Origin", "http://localhost")
+	w.Header().Set("Access-Control-Allow-Origin", "http://localhost")
+	w.Header().Add("Access-Control-Allow-Credentials", "true")
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
 }

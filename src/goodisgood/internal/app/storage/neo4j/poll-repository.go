@@ -97,12 +97,29 @@ func (r *PollRepository) getWordsList(tx neo4j.Transaction) ([]string, error) {
 func (r *PollRepository) getPollResults(tx neo4j.Transaction, auuid string) (*model.Poll, error) {
 	result, err := tx.Run(
 		`match (u:user)-[o:OWNS]->(a:account{id:$auuid})
-		merge (u)-[m:MARKED]->(w:word)
-		return w.name as name, m.mark as mark`,
+		optional match (u)-[m:MARKED]->(w:word)
+			call apoc.do.when(
+				m is null,
+				'return null',
+				'return w.name as name, m.mark as mark',
+				{w: w, m: m})
+		yield value
+		return value.name as name, value.mark as mark`,
 		map[string]interface{}{
 			"auuid": auuid,
 		},
 	)
+
+	// result, err := tx.Run(
+	// 	`match (u:user)-[o:OWNS]->(a:account{id:$auuid})
+	// 	match (w:word{name: $wname})
+	// 	merge (u)-[m:MARKED{mark: $mark}]->(w)
+	// 	return m is not null as ok`,
+	// 	map[string]interface{}{
+	// 		"auuid": auuid,
+	// 	},
+	// )
+
 	if err != nil {
 		return nil, err
 	}
@@ -128,9 +145,6 @@ func (r *PollRepository) getPollResults(tx neo4j.Transaction, auuid string) (*mo
 	}
 	return p, nil
 }
-
-// match (u:user)-[o:OWNS]->(a:account{id:"a3b0ff1b-67ed-4b2d-9959-b35c4fa3b68b"})
-// match (w:word{name: "неплохой"})
 
 func (r *PollRepository) submitPoll(tx neo4j.Transaction, auuid string, a *model.Answer) (*model.Answer, error) {
 	result, err := tx.Run(

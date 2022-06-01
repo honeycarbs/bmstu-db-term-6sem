@@ -13,11 +13,3 @@ type Stats struct {
 type Poll struct {
 	Answer []Answer
 }
-
-// CALL apoc.trigger.add(
-//     'deleteAccountWithUser',
-//     'UNWIND $deletedNodes as acc
-//     match (u:user)-[o:OWNS]->(:acc)
-//     detach delete u',
-//     {phase:'before'}
-// )
