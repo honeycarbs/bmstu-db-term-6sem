@@ -1,5 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/honeycarbs/Documents/bmstu-db-term-6sem/src/goodisgood'
-go build -v ./cmd/main
-make: Leaving directory '/home/honeycarbs/Documents/bmstu-db-term-6sem/src/goodisgood'
- 
